@@ -13,7 +13,7 @@ IF(Boost_FOUND)
   LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
 ENDIF(Boost_FOUND)
 
-list(APPEND Targets timer1 timer2 timer3 timer4 timer5 daytime1)
+list(APPEND Targets timer1 timer2 timer3 timer4 timer5 daytime1 daytime2)
 
 foreach(target IN LISTS Targets)
     add_executable(${target} ${target}.cpp)

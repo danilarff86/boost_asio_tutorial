@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+project(leetcode-solutions LANGUAGES C CXX)
+set(VERSION_MAJOR 1)
+set(VERSION_MINOR 0)
+set(VERSION_PATCH 0)
+set(CMAKE_CXX_STANDARD 14)
+
+SET(Boost_USE_STATIC_LIBS OFF)
+SET(Boost_USE_MULTITHREAD ON)
+FIND_PACKAGE(Boost 1.45.0 REQUIRED COMPONENTS system thread)
+IF(Boost_FOUND)
+  INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
+  LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
+ENDIF(Boost_FOUND)
+
+list(APPEND Targets timer1 timer2 timer3 timer4 timer5)
+
+foreach(target IN LISTS Targets)
+    add_executable(${target} ${target}.cpp)
+    target_link_libraries(${target} ${Boost_LIBRARIES})
+endforeach()
